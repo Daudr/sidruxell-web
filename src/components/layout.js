@@ -4,6 +4,7 @@ import base from './base.css'
 import Container from './container'
 import Navigation from './navigation'
 import Header from './header/header'
+import Footer from './footer/footer';
 
 class Template extends React.Component {
   render() {
@@ -19,6 +20,7 @@ class Template extends React.Component {
       <div>
         <Header location={location}></Header>
         <Container>{children}</Container>
+        <Footer></Footer>
       </div>
     )
   }
