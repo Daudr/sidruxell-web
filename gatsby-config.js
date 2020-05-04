@@ -1,3 +1,5 @@
+const path = require('path');
+
 require('dotenv').config({
   path: `.env.${process.env.NODE_ENV}`,
 })
@@ -34,8 +36,28 @@ module.exports = {
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-sharp',
     {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `logo`,
+        path: path.join(__dirname, `static`, `assets`, `logo`),
+      },
+    },
+    {
+      resolve: 'gatsby-plugin-sass',
+      options: {
+        includePaths: ['static/assets/styles/styles.scss'],
+      },
+    },
+    {
       resolve: 'gatsby-source-contentful',
       options: contentfulConfig,
+    },
+    {
+      resolve: `gatsby-plugin-google-fonts`,
+      options: {
+        fonts: [`roboto`],
+        display: 'swap',
+      },
     },
   ],
 }
