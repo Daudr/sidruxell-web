@@ -66,35 +66,36 @@ export default ({ location }) => (
             <Link to="/" className={location.pathname === '/' ? 'active' : ''}>
               <strong>Home</strong>
             </Link>
-            <Link to="/gallery" className={location.pathname === '/gallery' ? 'active' : ''}>
+            <Link
+              to="/gallery"
+              className={location.pathname === '/gallery' ? 'active' : ''}
+            >
               <strong>Gallery</strong>
             </Link>
-            <Link to="/about" className={location.pathname === '/about' ? 'active' : ''}>
+            <Link
+              to="/about"
+              className={location.pathname === '/about' ? 'active' : ''}
+            >
               <strong>About</strong>
             </Link>
           </nav>
 
           <div className="social">
-            <Img
-              className="social-logo"
-              fixed={data.facebook.childImageSharp.fixed}
-            ></Img>
-            <Img
-              className="social-logo"
-              fixed={data.instagram.childImageSharp.fixed}
-            ></Img>
-            <Img
-              className="social-logo"
-              fixed={data.youtube.childImageSharp.fixed}
-            ></Img>
-            <Img
-              className="social-logo"
-              fixed={data.pinterest.childImageSharp.fixed}
-            ></Img>
-            <Img
-              className="social-logo"
-              fixed={data.behance.childImageSharp.fixed}
-            ></Img>
+            <a href="https://www.facebook.com/sidruxellart/" target="_blank" className="social-logo">
+              <Img fixed={data.facebook.childImageSharp.fixed}></Img>
+            </a>
+            <a href="https://www.instagram.com/sidruxell/" target="_blank" className="social-logo">
+              <Img fixed={data.instagram.childImageSharp.fixed}></Img>
+            </a>
+            <a href="https://www.youtube.com/user/sidruxell" target="_blank" className="social-logo">
+              <Img fixed={data.youtube.childImageSharp.fixed}></Img>
+            </a>
+            <a href="https://www.pinterest.it/livingpixelsart/" target="_blank" className="social-logo">
+              <Img fixed={data.pinterest.childImageSharp.fixed}></Img>
+            </a>
+            <a href="" target="_blank" className="social-logo">
+              <Img fixed={data.behance.childImageSharp.fixed}></Img>
+            </a>
           </div>
         </div>
       </header>
