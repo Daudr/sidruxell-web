@@ -13,8 +13,6 @@ class RootIndex extends React.Component {
   render() {
     const siteTitle = get(this, 'props.data.site.siteMetadata.title')
 
-    console.log(this.props.data)
-
     return (
       <Layout location={this.props.location}>
         <Helmet title={`About | ${siteTitle}`} />
