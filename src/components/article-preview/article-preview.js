@@ -3,7 +3,7 @@ import Img from 'gatsby-image'
 
 import './article-preview.scss'
 
-export default ({ image, position = 'dx', hasAction = true }) => (
+export default ({ image, position = 'dx', hasAction = true, actionText = 'Scopri ora' }) => (
   <div style={{ marginBottom: `100px` }}>
     {position === 'dx' ? (
       <div className={`article ${position}`}>
@@ -21,7 +21,7 @@ export default ({ image, position = 'dx', hasAction = true }) => (
             aliquip
           </div>
           {hasAction ? (
-            <button className="article__body-action">Scopri ora</button>
+            <button className="article__body-action">{actionText}</button>
           ) : null}
         </div>
         <Img className={`article__logo ${position}`} fixed={image} />
@@ -43,7 +43,7 @@ export default ({ image, position = 'dx', hasAction = true }) => (
             aliquip
           </div>
           {hasAction ? (
-            <button className="article__body-action">Scopri ora</button>
+            <button className="article__body-action">{actionText}</button>
           ) : null}
         </div>
       </div>
