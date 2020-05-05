@@ -81,19 +81,19 @@ export default ({ location }) => (
           </nav>
 
           <div className="social">
-            <a href="https://www.facebook.com/sidruxellart/" target="_blank" className="social-logo">
+            <a href="https://www.facebook.com/sidruxellart/" target="_blank" rel="noopener noreferrer" className="social-logo">
               <Img fixed={data.facebook.childImageSharp.fixed}></Img>
             </a>
-            <a href="https://www.instagram.com/sidruxell/" target="_blank" className="social-logo">
+            <a href="https://www.instagram.com/sidruxell/" target="_blank" rel="noopener noreferrer" className="social-logo">
               <Img fixed={data.instagram.childImageSharp.fixed}></Img>
             </a>
-            <a href="https://www.youtube.com/user/sidruxell" target="_blank" className="social-logo">
+            <a href="https://www.youtube.com/user/sidruxell" target="_blank" rel="noopener noreferrer" className="social-logo">
               <Img fixed={data.youtube.childImageSharp.fixed}></Img>
             </a>
-            <a href="https://www.pinterest.it/livingpixelsart/" target="_blank" className="social-logo">
+            <a href="https://www.pinterest.it/livingpixelsart/" target="_blank" rel="noopener noreferrer" className="social-logo">
               <Img fixed={data.pinterest.childImageSharp.fixed}></Img>
             </a>
-            <a href="" target="_blank" className="social-logo">
+            <a href="" target="_blank" rel="noopener noreferrer" className="social-logo">
               <Img fixed={data.behance.childImageSharp.fixed}></Img>
             </a>
           </div>
