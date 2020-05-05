@@ -1,0 +1,65 @@
+.article {
+  display: flex;
+
+  &.sx {
+    text-align: left;
+  }
+
+  &.dx {
+    text-align: right;
+  }
+
+  &__logo {
+    width: 40%;
+
+    &.dx {
+      margin-left: 60px;
+    }
+    &.sx {
+      margin-right: 60px;
+    }
+  }
+
+  &__body {
+    width: 60%;
+
+    &-subtitle {
+      font-size: 15px;
+      font-weight: 600;
+      letter-spacing: 5px;
+      color: #7baee2;
+      text-transform: uppercase;
+      margin-bottom: 5px;
+      margin-top: 5px;
+    }
+
+    &-title {
+      font-size: 35px;
+      margin-top: 0;
+      margin-bottom: 0;
+    }
+
+    &-text {
+      font-family: 'Open Sans';
+      font-weight: 300;
+      height: 155px;
+      max-height: 155px;
+      text-overflow: ellipsis;
+      overflow: hidden;
+    }
+
+    &-action {
+      font-family: 'Open Sans';
+      font-size: 18px;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      color: white;
+
+      background-color: #ff48b9;
+      border: none;
+      padding: 20px 40px;
+
+      margin-top: 25px;
+    }
+  }
+}
