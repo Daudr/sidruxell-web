@@ -55,9 +55,9 @@ export default ({ location }) => (
     render={(data) => (
       <header>
         <div className="header-wrapper">
-          <div className="title">
+          <div className="header__title">
             <Img className="logo" fixed={data.logo.childImageSharp.fixed}></Img>
-            <span className="title">
+            <span className="header__title">
               <strong>Sid</strong> <span>Ruxell Art</span>
             </span>
           </div>

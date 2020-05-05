@@ -1,35 +1,55 @@
 import React from 'react'
 import { graphql } from 'gatsby'
+import Img from 'gatsby-image'
 import get from 'lodash/get'
 import { Helmet } from 'react-helmet'
-import Hero from '../components/hero'
 import Layout from '../components/layout'
-import ArticlePreview from '../components/article-preview'
+import ArticlePreview from '../components/article-preview/article-preview'
+
+import './index.scss'
 
 class RootIndex extends React.Component {
   render() {
     const siteTitle = get(this, 'props.data.site.siteMetadata.title')
-    const posts = get(this, 'props.data.allContentfulBlogPost.edges')
-    const [author] = get(this, 'props.data.allContentfulPerson.edges')
 
     return (
       <Layout location={this.props.location}>
-        <div style={{ background: '#fff' }}>
+        <Img
+          fluid={this.props.data.sushi.childImageSharp.fluid}
+          className="full-width-img"
+        />
+        <div className="page-title-wrapper">
           <Helmet title={siteTitle} />
-          <Hero data={author.node} />
-          <div className="wrapper">
-            <h2 className="section-headline">Recent articles</h2>
-            <ul className="article-list">
-              {posts.map(({ node }) => {
-                return (
-                  <li key={node.slug}>
-                    <ArticlePreview article={node} />
-                  </li>
-                )
-              })}
-            </ul>
-          </div>
+          <h4 className="subtitle">Benvenuti nel mio mondo</h4>
+          <h2 className="title">
+            <strong>La vita non consiste nel trovare te stesso.</strong>
+            <strong>La vita consiste nel creare te stesso.</strong>
+          </h2>
         </div>
+        <div className="articles-wrapper">
+          <ArticlePreview
+            position="sx"
+            image={this.props.data.articleLogo.childImageSharp.fixed}
+          />
+          <ArticlePreview
+            image={this.props.data.procreate.childImageSharp.fixed}
+            hasAction={false}
+          />
+        </div>
+        <Img
+          fluid={this.props.data.drawing.childImageSharp.fluid}
+          className="full-width-img"
+          style={{ maxHeight: `500px`, marginBottom: `40px` }}
+        />
+        <div className="page-title-wrapper">
+          <Helmet title={siteTitle} />
+          <h4 className="subtitle">Benvenuti nel mio mondo</h4>
+          <h2 className="title">
+            <strong>La vita non consiste nel trovare te stesso.</strong>
+            <strong>La vita consiste nel creare te stesso.</strong>
+          </h2>
+        </div>
+        <ArticlePreview image={this.props.data.brushes.childImageSharp.fixed} />
       </Layout>
     )
   }
@@ -44,46 +64,38 @@ export const pageQuery = graphql`
         title
       }
     }
-    allContentfulBlogPost(sort: { fields: [publishDate], order: DESC }) {
-      edges {
-        node {
-          title
-          slug
-          publishDate(formatString: "MMMM Do, YYYY")
-          tags
-          heroImage {
-            fluid(maxWidth: 350, maxHeight: 196, resizingBehavior: SCALE) {
-              ...GatsbyContentfulFluid_tracedSVG
-            }
-          }
-          description {
-            childMarkdownRemark {
-              html
-            }
-          }
+    sushi: file(relativePath: { eq: "sushi.png" }) {
+      childImageSharp {
+        fluid(fit: COVER) {
+          ...GatsbyImageSharpFluid
         }
       }
     }
-    allContentfulPerson(
-      filter: { contentful_id: { eq: "15jwOBqpxqSAOy2eOO4S0m" } }
-    ) {
-      edges {
-        node {
-          name
-          shortBio {
-            shortBio
-          }
-          title
-          heroImage: image {
-            fluid(
-              maxWidth: 1180
-              maxHeight: 480
-              resizingBehavior: PAD
-              background: "rgb:000000"
-            ) {
-              ...GatsbyContentfulFluid_tracedSVG
-            }
-          }
+    drawing: file(relativePath: { eq: "drawing.png" }) {
+      childImageSharp {
+        fluid(fit: COVER) {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+    articleLogo: file(relativePath: { eq: "article-logo.png" }) {
+      childImageSharp {
+        fixed(width: 340) {
+          ...GatsbyImageSharpFixed
+        }
+      }
+    }
+    procreate: file(relativePath: { eq: "procreate.png" }) {
+      childImageSharp {
+        fixed(width: 340) {
+          ...GatsbyImageSharpFixed
+        }
+      }
+    }
+    brushes: file(relativePath: { eq: "brushes.png" }) {
+      childImageSharp {
+        fixed(width: 340) {
+          ...GatsbyImageSharpFixed
         }
       }
     }

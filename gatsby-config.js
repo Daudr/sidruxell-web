@@ -43,9 +43,16 @@ module.exports = {
       },
     },
     {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `images`,
+        path: path.join(__dirname, `static`, `assets`, `images`),
+      },
+    },
+    {
       resolve: 'gatsby-plugin-sass',
       options: {
-        includePaths: ['static/assets/styles/styles.scss'],
+        includePaths: ['./static/assets/styles/styles.scss'],
       },
     },
     {
