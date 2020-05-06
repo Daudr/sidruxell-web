@@ -9,23 +9,21 @@ import './gallery.scss'
 
 class GalleryPage extends React.Component {
   state = {
-    open: false,
-    selectedImage: null,
+    selectedImage: this.props.data.images.nodes[0].childImageSharp.fluid,
   }
 
   handleClick = (image) => {
-    console.log(image)
     this.setState({
       selectedImage: image.childImageSharp.fluid,
-      open: true,
     })
+    document.getElementById('dialog').showModal()
   }
 
   handleClose = () => {
     this.setState({
-      open: false,
-      selectedImage: null,
+      selectedImage: this.props.data.images.nodes[0].childImageSharp.fluid,
     })
+    document.getElementById('dialog').close()
   }
 
   render() {
@@ -53,18 +51,16 @@ class GalleryPage extends React.Component {
             </div>
           ))}
         </div>
-        {this.state.open && (
-            <div className="centerpoint">
-              <dialog
-                className="dialog"
-                style={{ position: 'absolute', minWidth: `600px` }}
-                open={this.state.open}
-                onClick={this.handleClose}
-              >
-                <Img fluid={this.state.selectedImage} />
-              </dialog>
-            </div>
-          )}
+        <div className="centerpoint">
+          <dialog
+            id="dialog"
+            className="dialog"
+            style={{ position: 'absolute', minWidth: `600px` }}
+            onClick={this.handleClose}
+          >
+            <Img fluid={this.state.selectedImage} />
+          </dialog>
+        </div>
       </Layout>
     )
   }
