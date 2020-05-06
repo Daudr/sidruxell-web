@@ -1,0 +1,56 @@
+.gallery {
+  &__title {
+    font-size: 20px;
+    font-family: 'Open Sans';
+    letter-spacing: 5px;
+    color: #7baee2;
+    text-align: center;
+    font-weight: 600;
+    text-transform: uppercase;
+    margin-top: 50px;
+    margin-bottom: 40px;
+  }
+
+  &__wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 100%;
+    padding: 6px;
+
+    & > div:last-of-type{
+      width: 96% !important;
+
+      & > div {
+        width: 100% !important;
+        height: 300px !important;
+      }
+    }
+  }
+}
+
+.centerpoint {
+  top: 15%;
+  left: 50%;
+  position: fixed;
+}
+
+dialog {
+  position: relative;
+
+  width: 600px;
+  margin-left: -300px;
+
+  border: none;
+  pointer-events: none;
+
+  &::before {
+    content: url('../../static/assets/fonts/x.png');
+    position: relative;
+    bottom: 40px;
+    left: 100%;
+    pointer-events: all;
+    cursor: pointer;
+  }
+}
