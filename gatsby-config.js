@@ -1,4 +1,4 @@
-const path = require('path');
+const path = require('path')
 
 require('dotenv').config({
   path: `.env.${process.env.NODE_ENV}`,
@@ -50,6 +50,13 @@ module.exports = {
       },
     },
     {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `gallery`,
+        path: path.join(__dirname, `static`, `assets`, `gallery`),
+      },
+    },
+    {
       resolve: 'gatsby-plugin-sass',
       options: {
         includePaths: ['./static/assets/styles/styles.scss'],
@@ -62,7 +69,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-google-fonts`,
       options: {
-        fonts: [`roboto`, `Open+Sans`],
+        fonts: ['material icons', `roboto`, `Open+Sans`],
         display: 'swap',
       },
     },

@@ -9,7 +9,7 @@ import SocialHero from '../components/social-hero/social-hero'
 
 import './about.scss'
 
-class RootIndex extends React.Component {
+class AboutPage extends React.Component {
   render() {
     const siteTitle = get(this, 'props.data.site.siteMetadata.title')
 
@@ -53,7 +53,7 @@ class RootIndex extends React.Component {
   }
 }
 
-export default RootIndex
+export default AboutPage
 
 export const pageQuery = graphql`
   query AboutQuery {
