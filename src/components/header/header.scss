@@ -15,7 +15,7 @@ header {
     max-width: 1180px;
     width: 100%;
 
-    .header__title {
+    div.header__title {
       display: flex;
       align-items: center;
       width: 33%;
@@ -78,6 +78,59 @@ header {
         display: flex;
         align-items: center;
         justify-content: center;
+      }
+    }
+
+    .material-icons {
+      display: none;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  header {
+    justify-content: center;
+    background-color: white;
+    min-height: 56px;
+    box-shadow: 0 2px 12px gray;
+
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+
+    .header-wrapper {
+      display: flex;
+      width: 100%;
+      justify-content: center;
+
+      div.header__title {
+        width: 100%;
+        justify-content: center;
+
+        a {
+          display: flex;
+          align-items: center;
+          text-decoration: none;
+          width: auto;
+        }
+
+        strong {
+          margin-right: 5px;
+        }
+      }
+
+      nav {
+        display: none;
+      }
+
+      .social {
+        display: none;
+      }
+
+      .material-icons {
+        display: flex;
+        margin-right: 10px;
+        cursor: pointer;
       }
     }
   }
