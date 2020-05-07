@@ -15,9 +15,10 @@
 
   &__logo {
     &-inside {
-      display: none;
+      display: none !important;
     }
 
+    display: inline-block !important;
     width: 40%;
 
     &.dx {
