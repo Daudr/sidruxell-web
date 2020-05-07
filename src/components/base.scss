@@ -80,3 +80,19 @@ a {
 .list-inline li {
   display: inline-block;
 }
+
+body {
+  .mobile-header {
+    display: none;
+  }
+
+  &.mobile-header__open {
+    overflow: hidden;
+
+    .mobile-header {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+  }
+}
