@@ -40,3 +40,27 @@
     left: calc(1870px - 100vw);
   }
 }
+
+@media (max-width: 600px) {
+  /* fonts */
+  .page-title-wrapper {
+    .subtitle {
+      font-size: 15px;
+    }
+  
+    .title {
+      font-size: 25px;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  // everything but fonts
+  .page-title-wrapper {
+    margin-bottom: 60px;
+  }
+
+  .full-width-img {
+    right: 20px;
+  }
+}

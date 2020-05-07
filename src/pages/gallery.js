@@ -43,7 +43,6 @@ class GalleryPage extends React.Component {
           {this.props.data.images.nodes.map((image) => (
             <div
               className="gallery__img"
-              style={{ width: `30%`, display: `flex`, margin: `6px 0` }}
               onClick={(_) => this.handleClick(image)}
               image={image}
             >
