@@ -19,6 +19,12 @@
     width: 100%;
     padding: 6px;
 
+    .gallery__img {
+      display: flex;
+      width: 30%;
+      margin: 6px 0;
+    }
+
     & > div:last-of-type {
       width: 96% !important;
 
@@ -58,5 +64,42 @@ dialog {
     bottom: 0px;
     left: 0px;
     background: rgba(0, 0, 0, 0.4);
+  }
+}
+
+@media (max-width: 768px) {
+  .gallery {
+    &__title {
+      font-size: 15px;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .gallery {
+  
+    &__wrapper {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-evenly;
+      width: 100%;
+      padding: 6px;
+
+      .gallery__img {
+        width: 100%;
+        margin: 6px 0;
+        justify-content: center;
+      }
+  
+      & > div:last-of-type {
+        width: 96% !important;
+  
+        & > div {
+          width: 100% !important;
+          height: 300px !important;
+        }
+      }
+    }
   }
 }

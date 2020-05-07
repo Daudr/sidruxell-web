@@ -2,6 +2,7 @@ import React from 'react'
 import './base.scss'
 import Container from './container'
 import Header from './header/header'
+import MobileHeader from './mobile-header/mobile-header'
 import Footer from './footer/footer'
 
 class Template extends React.Component {
@@ -15,9 +16,10 @@ class Template extends React.Component {
 
     return (
       <div>
-        <Header location={location}></Header>
+        <Header location={location} />
+        <MobileHeader location={location} />
         <Container>{children}</Container>
-        <Footer></Footer>
+        <Footer />
       </div>
     )
   }
