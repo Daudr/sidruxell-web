@@ -16,6 +16,7 @@ class GalleryPage extends React.Component {
     this.setState({
       selectedImage: image.childImageSharp.fluid,
     })
+    document.getElementsByTagName('body')[0].classList.add('dialog-open')
     document.getElementById('dialog').showModal()
   }
 
@@ -23,6 +24,7 @@ class GalleryPage extends React.Component {
     this.setState({
       selectedImage: this.props.data.images.nodes[0].childImageSharp.fluid,
     })
+    document.getElementsByTagName('body')[0].classList.remove('dialog-open');
     document.getElementById('dialog').close()
   }
 
