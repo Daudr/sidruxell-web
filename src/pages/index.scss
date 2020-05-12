@@ -29,15 +29,9 @@
   }
 }
 
-@media (min-width: 1440px) {
+@media (min-width: 1181px) {
   .full-width-img {
-    left: calc(1310px - 100vw);
-  }
-}
-
-@media (min-width: 2560px) {
-  .full-width-img {
-    left: calc(1870px - 100vw);
+    left: calc((1180px - 100vw) / 2);
   }
 }
 
