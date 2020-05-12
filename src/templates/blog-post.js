@@ -5,6 +5,7 @@ import get from 'lodash/get'
 import Img from 'gatsby-image'
 import Layout from '../components/layout'
 
+import './blog-post.scss'
 
 class BlogPostTemplate extends React.Component {
   render() {
@@ -13,17 +14,13 @@ class BlogPostTemplate extends React.Component {
 
     return (
       <Layout location={this.props.location}>
-        <div style={{ background: '#fff' }}>
+        <div style={{ background: '#fff' }} className="blog">
           <Helmet title={`${post.title} | ${siteTitle}`} />
           <div className="wrapper">
-            <h1 className="section-headline">{post.title}</h1>
-            <p
-              style={{
-                display: 'block',
-              }}
-            >
-              {post.publishDate}
-            </p>
+            <h4 className="blog__subtitle">{post.subtitle}</h4>
+            <h2 className="blog__title">
+              <strong>{post.title}</strong>
+            </h2>
             <div
               dangerouslySetInnerHTML={{
                 __html: post.body.childMarkdownRemark.html,
@@ -47,12 +44,7 @@ export const pageQuery = graphql`
     }
     contentfulBlogPost(slug: { eq: $slug }) {
       title
-      publishDate(formatString: "MMMM Do, YYYY")
-      heroImage {
-        fluid(maxWidth: 1180, background: "rgb:000000") {
-          ...GatsbyContentfulFluid_tracedSVG
-        }
-      }
+      subtitle
       body {
         childMarkdownRemark {
           html
