@@ -3,7 +3,7 @@ import { graphql } from 'gatsby'
 import Img from 'gatsby-image'
 import get from 'lodash/get'
 import { Helmet } from 'react-helmet'
-import Layout from '../components/layout'
+import Layout from '../components/layout/layout'
 import ArticlePreview from '../components/article-preview/article-preview'
 import SocialHero from '../components/social-hero/social-hero'
 

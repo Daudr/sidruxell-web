@@ -1,9 +1,9 @@
 import React from 'react'
+import Header from '../header/header'
+import MobileHeader from '../mobile-header/mobile-header'
+import Footer from '../footer/footer'
+
 import './base.scss'
-import Container from './container'
-import Header from './header/header'
-import MobileHeader from './mobile-header/mobile-header'
-import Footer from './footer/footer'
 
 class Template extends React.Component {
   render() {
@@ -18,7 +18,7 @@ class Template extends React.Component {
       <div>
         <Header location={location} />
         <MobileHeader location={location} />
-        <Container>{children}</Container>
+        <div className="container">{children}</div>
         <Footer />
       </div>
     )
