@@ -101,26 +101,5 @@ export const pageQuery = graphql`
         }
       }
     }
-    articleLogo: file(relativePath: { eq: "article-logo.png" }) {
-      childImageSharp {
-        fixed(width: 340) {
-          ...GatsbyImageSharpFixed
-        }
-      }
-    }
-    procreate: file(relativePath: { eq: "procreate.png" }) {
-      childImageSharp {
-        fixed(width: 340) {
-          ...GatsbyImageSharpFixed
-        }
-      }
-    }
-    brushes: file(relativePath: { eq: "brushes.png" }) {
-      childImageSharp {
-        fixed(width: 340) {
-          ...GatsbyImageSharpFixed
-        }
-      }
-    }
   }
 `

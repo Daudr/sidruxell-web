@@ -9,6 +9,7 @@ export default ({
   position = 'dx',
   hasAction = true,
   actionText = 'Scopri ora',
+  customAction = null,
 }) => (
   <div className="article__wrapper">
     {position === 'dx' ? (
@@ -25,10 +26,14 @@ export default ({
           <div
             className="article__body-text"
             dangerouslySetInnerHTML={{
-              __html: article.description.childMarkdownRemark.html
+              __html: article.description.childMarkdownRemark.html,
             }}
           ></div>
-          {hasAction ? (
+          {hasAction && customAction !== null ? (
+            <a href={customAction} rel="noopener norefferer" className="article__body-action">
+              {actionText}
+            </a>
+          ) : hasAction ? (
             <Link className="article__body-action" to={`/blog/${article.slug}`}>
               {actionText}
             </Link>
@@ -57,10 +62,14 @@ export default ({
           <div
             className="article__body-text"
             dangerouslySetInnerHTML={{
-              __html: article.description.childMarkdownRemark.html
+              __html: article.description.childMarkdownRemark.html,
             }}
           ></div>
-          {hasAction ? (
+          {hasAction && customAction !== null ? (
+            <a href={customAction} rel="noopener norefferer" className="article__body-action">
+              {actionText}
+            </a>
+          ) : hasAction ? (
             <Link className="article__body-action" to={`/blog/${article.slug}`}>
               {actionText}
             </Link>
