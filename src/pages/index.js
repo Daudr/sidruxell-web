@@ -11,6 +11,14 @@ import './index.scss'
 class RootIndex extends React.Component {
   render() {
     const siteTitle = get(this, 'props.data.site.siteMetadata.title')
+    const articles = get(this, 'props.data.articles.nodes')
+
+    const firstArticles = [...articles];
+    const lastArticle = firstArticles.pop();
+
+    console.log(articles)
+    console.log(firstArticles)
+    console.log(lastArticle)
 
     return (
       <Layout location={this.props.location}>
@@ -27,14 +35,12 @@ class RootIndex extends React.Component {
           </h2>
         </div>
         <div className="articles-wrapper">
-          <ArticlePreview
-            position="sx"
-            image={this.props.data.articleLogo.childImageSharp.fixed}
-          />
-          <ArticlePreview
-            image={this.props.data.procreate.childImageSharp.fixed}
-            hasAction={false}
-          />
+          {firstArticles.map((article, i) => (
+            <ArticlePreview
+              position={i ? 'sx' : 'dx'}
+              article={article}
+            />
+          ))}
         </div>
         <Img
           fluid={this.props.data.drawing.childImageSharp.fluid}
@@ -49,7 +55,7 @@ class RootIndex extends React.Component {
             <strong>La vita consiste nel creare te stesso.</strong>
           </h2>
         </div>
-        <ArticlePreview image={this.props.data.brushes.childImageSharp.fixed} />
+        <ArticlePreview article={lastArticle} />
       </Layout>
     )
   }
@@ -62,6 +68,23 @@ export const pageQuery = graphql`
     site {
       siteMetadata {
         title
+      }
+    }
+    articles: allContentfulBlogPost(limit: 3) {
+      nodes {
+        title
+        subtitle
+        description {
+          childMarkdownRemark {
+            html
+          }
+        }
+        slug
+        heroImage {
+          fixed(width: 340) {
+            ...GatsbyContentfulFixed_tracedSVG
+          }
+        }
       }
     }
     sushi: file(relativePath: { eq: "sushi.png" }) {
