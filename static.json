@@ -3,6 +3,10 @@
   "headers": {
     "/**.js": {
       "Cache-Control": "public, max-age=0, must-revalidate"
+    },
+    "/**.png": {
+      "Pragma":"public",
+      "Cache-Control": "max-age=86400"
     }
   }
 }

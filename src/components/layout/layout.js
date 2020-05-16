@@ -1,9 +1,10 @@
 import React from 'react'
+import Header from '../header/header'
+import MobileHeader from '../mobile-header/mobile-header'
+import Footer from '../footer/footer'
+
 import './base.scss'
-import Container from './container'
-import Header from './header/header'
-import MobileHeader from './mobile-header/mobile-header'
-import Footer from './footer/footer'
+import { Helmet } from 'react-helmet'
 
 class Template extends React.Component {
   render() {
@@ -16,9 +17,10 @@ class Template extends React.Component {
 
     return (
       <div>
+        <Helmet htmlAttributes={{'lang': 'it'}} />
         <Header location={location} />
         <MobileHeader location={location} />
-        <Container>{children}</Container>
+        <div className="container">{children}</div>
         <Footer />
       </div>
     )

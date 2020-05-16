@@ -3,7 +3,7 @@ import { graphql } from 'gatsby'
 import Img from 'gatsby-image'
 import get from 'lodash/get'
 import { Helmet } from 'react-helmet'
-import Layout from '../components/layout'
+import Layout from '../components/layout/layout'
 import ArticlePreview from '../components/article-preview/article-preview'
 
 import './index.scss'
@@ -11,45 +11,51 @@ import './index.scss'
 class RootIndex extends React.Component {
   render() {
     const siteTitle = get(this, 'props.data.site.siteMetadata.title')
+    const articles = get(this, 'props.data.articles.nodes')
+
+    const firstArticles = [...articles];
+    const lastArticle = firstArticles.pop();
+
+    const pageInfo = get(this, 'props.data.pageInfo')
+    const heroImage = pageInfo.heroImage.fluid;
+    const contentImage = pageInfo.contentImage.fluid;
 
     return (
       <Layout location={this.props.location}>
+        <Helmet title={siteTitle}>
+          <meta name="description" content="Sito web Sid Ruxell" />
+        </Helmet>
         <Img
-          fluid={this.props.data.sushi.childImageSharp.fluid}
+          fluid={heroImage}
           className="full-width-img"
         />
         <div className="page-title-wrapper">
-          <Helmet title={siteTitle} />
-          <h4 className="subtitle">Benvenuti nel mio mondo</h4>
+          <h4 className="subtitle">{pageInfo.subtitle}</h4>
           <h2 className="title">
-            <strong>La vita non consiste nel trovare te stesso.</strong>
-            <strong>La vita consiste nel creare te stesso.</strong>
+            <strong>{pageInfo.title}</strong>
           </h2>
         </div>
         <div className="articles-wrapper">
-          <ArticlePreview
-            position="sx"
-            image={this.props.data.articleLogo.childImageSharp.fixed}
-          />
-          <ArticlePreview
-            image={this.props.data.procreate.childImageSharp.fixed}
-            hasAction={false}
-          />
+          {firstArticles.map((article, i) => (
+            <ArticlePreview
+              position={i ? 'sx' : 'dx'}
+              article={article}
+            />
+          ))}
         </div>
         <Img
-          fluid={this.props.data.drawing.childImageSharp.fluid}
+          fluid={contentImage}
           className="full-width-img"
           style={{ maxHeight: `500px`, marginBottom: `40px` }}
         />
         <div className="page-title-wrapper">
           <Helmet title={siteTitle} />
-          <h4 className="subtitle">Benvenuti nel mio mondo</h4>
+          <h4 className="subtitle">{pageInfo.contentSubtitle}</h4>
           <h2 className="title">
-            <strong>La vita non consiste nel trovare te stesso.</strong>
-            <strong>La vita consiste nel creare te stesso.</strong>
+            <strong>{pageInfo.contentTitle}</strong>
           </h2>
         </div>
-        <ArticlePreview image={this.props.data.brushes.childImageSharp.fixed} />
+        <ArticlePreview article={lastArticle} />
       </Layout>
     )
   }
@@ -64,38 +70,36 @@ export const pageQuery = graphql`
         title
       }
     }
-    sushi: file(relativePath: { eq: "sushi.png" }) {
-      childImageSharp {
-        fluid(fit: COVER) {
-          ...GatsbyImageSharpFluid
+    articles: allContentfulBlogPost(limit: 3) {
+      nodes {
+        title
+        subtitle
+        description {
+          childMarkdownRemark {
+            html
+          }
+        }
+        slug
+        heroImage {
+          fixed(width: 340) {
+            ...GatsbyContentfulFixed_tracedSVG
+          }
         }
       }
     }
-    drawing: file(relativePath: { eq: "drawing.png" }) {
-      childImageSharp {
-        fluid(fit: COVER) {
-          ...GatsbyImageSharpFluid
+    pageInfo: contentfulWebPage(webPageTitle:{ eq: "Home" }) {
+      title
+      subtitle
+      heroImage {
+        fluid {
+          ...GatsbyContentfulFluid_tracedSVG
         }
       }
-    }
-    articleLogo: file(relativePath: { eq: "article-logo.png" }) {
-      childImageSharp {
-        fixed(width: 340) {
-          ...GatsbyImageSharpFixed
-        }
-      }
-    }
-    procreate: file(relativePath: { eq: "procreate.png" }) {
-      childImageSharp {
-        fixed(width: 340) {
-          ...GatsbyImageSharpFixed
-        }
-      }
-    }
-    brushes: file(relativePath: { eq: "brushes.png" }) {
-      childImageSharp {
-        fixed(width: 340) {
-          ...GatsbyImageSharpFixed
+      contentTitle
+      contentSubtitle
+      contentImage {
+        fluid {
+          ...GatsbyContentfulFluid_tracedSVG
         }
       }
     }

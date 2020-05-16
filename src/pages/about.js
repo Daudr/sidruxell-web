@@ -3,7 +3,7 @@ import { graphql } from 'gatsby'
 import Img from 'gatsby-image'
 import get from 'lodash/get'
 import { Helmet } from 'react-helmet'
-import Layout from '../components/layout'
+import Layout from '../components/layout/layout'
 import ArticlePreview from '../components/article-preview/article-preview'
 import SocialHero from '../components/social-hero/social-hero'
 
@@ -12,40 +12,45 @@ import './about.scss'
 class AboutPage extends React.Component {
   render() {
     const siteTitle = get(this, 'props.data.site.siteMetadata.title')
+    const author = get(this, 'props.data.author')
+    const pageInfo = get(this, 'props.data.pageInfo')
 
     return (
       <Layout location={this.props.location}>
-        <Helmet title={`About | ${siteTitle}`} />
+        <Helmet title={`About | ${siteTitle}`}>
+          <meta name="description" content="Informazioni su Sid Ruxell" />
+        </Helmet>
         <Img
-          fluid={this.props.data.aboutHero.childImageSharp.fluid}
+          fluid={pageInfo.heroImage.fluid}
           className="full-width-img"
           style={{ marginBottom: `100px` }}
         />
         <ArticlePreview
           position="sx"
-          image={this.props.data.profilePic.childImageSharp.fixed}
+          article={author}
           actionText="Contact me"
+          customAction={`mailto:${author.mail}`}
         />
 
         <h2 className="social__title">Seguimi sui miei social</h2>
         <div className="social__wrapper">
           <SocialHero
             logoStyle={{ bottom: `145px`, maxWidth: `270px` }}
-            image={this.props.data.aboutFacebook.childImageSharp.fluid}
+            image={author.facebookImage.fluid}
             logo={this.props.data.facebookLogo.childImageSharp.fluid}
-            url="https://www.facebook.com/sidruxellart/"
+            url={author.facebookLink}
           />
           <SocialHero
             logoStyle={{ bottom: `108px` }}
-            image={this.props.data.aboutYouTube.childImageSharp.fluid}
+            image={author.youtubeImage.fluid}
             logo={this.props.data.youtubeLogo.childImageSharp.fluid}
-            url="https://www.instagram.com/sidruxell/"
+            url={author.youtubeLink}
           />
           <SocialHero
             logoStyle={{ bottom: `99px` }}
-            image={this.props.data.aboutInstagram.childImageSharp.fluid}
+            image={author.instagramImage.fluid}
             logo={this.props.data.instagramLogo.childImageSharp.fluid}
-            url="https://www.youtube.com/user/sidruxell"
+            url={author.instagramLink}
           />
         </div>
       </Layout>
@@ -62,27 +67,48 @@ export const pageQuery = graphql`
         title
       }
     }
-    aboutHero: file(relativePath: { eq: "about-hero.png" }) {
-      childImageSharp {
-        fluid(fit: COVER) {
-          ...GatsbyImageSharpFluid_withWebp
+    author: contentfulAuthor(contentful_id: { eq: "uGY5RwMMhAoEdomn81UYx" }) {
+      name
+      title
+      subtitle
+      mail
+      description {
+        childMarkdownRemark {
+          html
         }
       }
-    }
-    profilePic: file(relativePath: { eq: "profile-pic.png" }) {
-      childImageSharp {
-        fixed(height: 340) {
-          ...GatsbyImageSharpFixed_withWebp
+      heroImage {
+        fixed(width: 340) {
+          ...GatsbyContentfulFixed_tracedSVG
         }
       }
-    }
-    aboutFacebook: file(relativePath: { eq: "about-facebook.png" }) {
-      childImageSharp {
+      facebookLink
+      facebookImage {
         fluid(maxWidth: 270) {
-          ...GatsbyImageSharpFluid_withWebp
+          ...GatsbyContentfulFluid_tracedSVG
+        }
+      }
+      youtubeLink
+      youtubeImage {
+        fluid(maxWidth: 270) {
+          ...GatsbyContentfulFluid_tracedSVG
+        }
+      }
+      instagramLink
+      instagramImage {
+        fluid(maxWidth: 270) {
+          ...GatsbyContentfulFluid_tracedSVG
         }
       }
     }
+    pageInfo: contentfulWebPage(webPageTitle: { eq: "About" }) {
+      heroImage {
+        fluid {
+          ...GatsbyContentfulFluid_tracedSVG
+        }
+      }
+    }
+
     facebookLogo: file(relativePath: { eq: "facebook-logo.png" }) {
       childImageSharp {
         fluid(maxWidth: 170) {
@@ -90,23 +116,9 @@ export const pageQuery = graphql`
         }
       }
     }
-    aboutYouTube: file(relativePath: { eq: "about-youtube.png" }) {
-      childImageSharp {
-        fluid(maxWidth: 270) {
-          ...GatsbyImageSharpFluid
-        }
-      }
-    }
     youtubeLogo: file(relativePath: { eq: "youtube-logo.png" }) {
       childImageSharp {
         fluid(maxWidth: 170) {
-          ...GatsbyImageSharpFluid
-        }
-      }
-    }
-    aboutInstagram: file(relativePath: { eq: "about-instagram.png" }) {
-      childImageSharp {
-        fluid(maxWidth: 270) {
           ...GatsbyImageSharpFluid
         }
       }
