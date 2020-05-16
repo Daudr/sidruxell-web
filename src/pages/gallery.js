@@ -36,7 +36,9 @@ class GalleryPage extends React.Component {
 
     return (
       <Layout location={this.props.location}>
-        <Helmet title={`Gallery | ${siteTitle}`} />
+        <Helmet title={`Gallery | ${siteTitle}`}>
+          <meta name="description" content="Galleria di Immagini di Sid Ruxell" />
+        </Helmet>
         <Img
           fluid={heroImage}
           className="full-width-img"

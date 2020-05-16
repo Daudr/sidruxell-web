@@ -22,12 +22,14 @@ class RootIndex extends React.Component {
 
     return (
       <Layout location={this.props.location}>
+        <Helmet title={siteTitle}>
+          <meta name="description" content="Sito web Sid Ruxell" />
+        </Helmet>
         <Img
           fluid={heroImage}
           className="full-width-img"
         />
         <div className="page-title-wrapper">
-          <Helmet title={siteTitle} />
           <h4 className="subtitle">{pageInfo.subtitle}</h4>
           <h2 className="title">
             <strong>{pageInfo.title}</strong>

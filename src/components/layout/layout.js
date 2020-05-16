@@ -4,6 +4,7 @@ import MobileHeader from '../mobile-header/mobile-header'
 import Footer from '../footer/footer'
 
 import './base.scss'
+import { Helmet } from 'react-helmet'
 
 class Template extends React.Component {
   render() {
@@ -16,6 +17,7 @@ class Template extends React.Component {
 
     return (
       <div>
+        <Helmet htmlAttributes={{'lang': 'it'}} />
         <Header location={location} />
         <MobileHeader location={location} />
         <div className="container">{children}</div>
