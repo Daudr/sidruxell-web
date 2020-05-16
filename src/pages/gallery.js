@@ -9,12 +9,12 @@ import './gallery.scss'
 
 class GalleryPage extends React.Component {
   state = {
-    selectedImage: this.props.data.images.nodes[0].childImageSharp.fluid,
+    selectedImage: this.props.data.pageInfo.images[0].fluid,
   }
 
   handleClick = (image) => {
     this.setState({
-      selectedImage: image.childImageSharp.fluid,
+      selectedImage: image.fluid,
     })
     document.getElementsByTagName('body')[0].classList.add('dialog-open')
     document.getElementById('dialog').showModal()
@@ -22,7 +22,7 @@ class GalleryPage extends React.Component {
 
   handleClose = () => {
     this.setState({
-      selectedImage: this.props.data.images.nodes[0].childImageSharp.fluid,
+      selectedImage: this.props.data.pageInfo.images[0].fluid,
     })
     document.getElementsByTagName('body')[0].classList.remove('dialog-open');
     document.getElementById('dialog').close()
@@ -31,24 +31,29 @@ class GalleryPage extends React.Component {
   render() {
     const siteTitle = get(this, 'props.data.site.siteMetadata.title')
 
+    const pageInfo = get(this, 'props.data.pageInfo')
+    const heroImage = pageInfo.heroImage.fluid;
+
     return (
       <Layout location={this.props.location}>
-        <Helmet title={`Gallery | ${siteTitle}`} />
+        <Helmet title={`Gallery | ${siteTitle}`}>
+          <meta name="description" content="Galleria di Immagini di Sid Ruxell" />
+        </Helmet>
         <Img
-          fluid={this.props.data.nigiri.childImageSharp.fluid}
+          fluid={heroImage}
           className="full-width-img"
           style={{ marginBottom: `100px` }}
         />
         <h2 className="gallery__title">La mia gallery</h2>
 
         <div className="gallery__wrapper">
-          {this.props.data.images.nodes.map((image) => (
+          {pageInfo.images.map((image) => (
             <div
               className="gallery__img"
               onClick={(_) => this.handleClick(image)}
               image={image}
             >
-              <Img fixed={image.childImageSharp.fixed} />
+              <Img fixed={image.fixed} />
             </div>
           ))}
         </div>
@@ -76,22 +81,18 @@ export const pageQuery = graphql`
         title
       }
     }
-    nigiri: file(relativePath: { eq: "nigiri.png" }) {
-      childImageSharp {
-        fluid(fit: COVER) {
-          ...GatsbyImageSharpFluid_withWebp
+    pageInfo: contentfulWebPage(webPageTitle:{ eq: "Gallery" }) {
+      heroImage {
+        fluid {
+          ...GatsbyContentfulFluid_tracedSVG
         }
       }
-    }
-    images: allFile(filter: { sourceInstanceName: { eq: "gallery" } }) {
-      nodes {
-        childImageSharp {
-          fixed {
-            ...GatsbyImageSharpFixed_withWebp
-          }
-          fluid(fit: COVER) {
-            ...GatsbyImageSharpFluid_withWebp
-          }
+      images: gallery {
+        fixed {
+          ...GatsbyContentfulFixed_tracedSVG
+        }
+        fluid {
+          ...GatsbyContentfulFluid_tracedSVG
         }
       }
     }

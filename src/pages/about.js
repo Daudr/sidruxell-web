@@ -13,12 +13,15 @@ class AboutPage extends React.Component {
   render() {
     const siteTitle = get(this, 'props.data.site.siteMetadata.title')
     const author = get(this, 'props.data.author')
+    const pageInfo = get(this, 'props.data.pageInfo')
 
     return (
       <Layout location={this.props.location}>
-        <Helmet title={`About | ${siteTitle}`} />
+        <Helmet title={`About | ${siteTitle}`}>
+          <meta name="description" content="Informazioni su Sid Ruxell" />
+        </Helmet>
         <Img
-          fluid={this.props.data.aboutHero.childImageSharp.fluid}
+          fluid={pageInfo.heroImage.fluid}
           className="full-width-img"
           style={{ marginBottom: `100px` }}
         />
@@ -98,10 +101,10 @@ export const pageQuery = graphql`
         }
       }
     }
-    aboutHero: file(relativePath: { eq: "about-hero.png" }) {
-      childImageSharp {
-        fluid(fit: COVER) {
-          ...GatsbyImageSharpFluid_withWebp
+    pageInfo: contentfulWebPage(webPageTitle: { eq: "About" }) {
+      heroImage {
+        fluid {
+          ...GatsbyContentfulFluid_tracedSVG
         }
       }
     }

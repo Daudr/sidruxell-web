@@ -50,13 +50,6 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        name: `gallery`,
-        path: path.join(__dirname, `static`, `assets`, `gallery`),
-      },
-    },
-    {
       resolve: 'gatsby-plugin-sass',
       options: {
         includePaths: ['./static/assets/styles/styles.scss'],

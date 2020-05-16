@@ -16,22 +16,23 @@ class RootIndex extends React.Component {
     const firstArticles = [...articles];
     const lastArticle = firstArticles.pop();
 
-    console.log(articles)
-    console.log(firstArticles)
-    console.log(lastArticle)
+    const pageInfo = get(this, 'props.data.pageInfo')
+    const heroImage = pageInfo.heroImage.fluid;
+    const contentImage = pageInfo.contentImage.fluid;
 
     return (
       <Layout location={this.props.location}>
+        <Helmet title={siteTitle}>
+          <meta name="description" content="Sito web Sid Ruxell" />
+        </Helmet>
         <Img
-          fluid={this.props.data.sushi.childImageSharp.fluid}
+          fluid={heroImage}
           className="full-width-img"
         />
         <div className="page-title-wrapper">
-          <Helmet title={siteTitle} />
-          <h4 className="subtitle">Benvenuti nel mio mondo</h4>
+          <h4 className="subtitle">{pageInfo.subtitle}</h4>
           <h2 className="title">
-            <strong>La vita non consiste nel trovare te stesso.</strong>
-            <strong>La vita consiste nel creare te stesso.</strong>
+            <strong>{pageInfo.title}</strong>
           </h2>
         </div>
         <div className="articles-wrapper">
@@ -43,16 +44,15 @@ class RootIndex extends React.Component {
           ))}
         </div>
         <Img
-          fluid={this.props.data.drawing.childImageSharp.fluid}
+          fluid={contentImage}
           className="full-width-img"
           style={{ maxHeight: `500px`, marginBottom: `40px` }}
         />
         <div className="page-title-wrapper">
           <Helmet title={siteTitle} />
-          <h4 className="subtitle">Benvenuti nel mio mondo</h4>
+          <h4 className="subtitle">{pageInfo.contentSubtitle}</h4>
           <h2 className="title">
-            <strong>La vita non consiste nel trovare te stesso.</strong>
-            <strong>La vita consiste nel creare te stesso.</strong>
+            <strong>{pageInfo.contentTitle}</strong>
           </h2>
         </div>
         <ArticlePreview article={lastArticle} />
@@ -87,17 +87,19 @@ export const pageQuery = graphql`
         }
       }
     }
-    sushi: file(relativePath: { eq: "sushi.png" }) {
-      childImageSharp {
-        fluid(fit: COVER) {
-          ...GatsbyImageSharpFluid
+    pageInfo: contentfulWebPage(webPageTitle:{ eq: "Home" }) {
+      title
+      subtitle
+      heroImage {
+        fluid {
+          ...GatsbyContentfulFluid_tracedSVG
         }
       }
-    }
-    drawing: file(relativePath: { eq: "drawing.png" }) {
-      childImageSharp {
-        fluid(fit: COVER) {
-          ...GatsbyImageSharpFluid
+      contentTitle
+      contentSubtitle
+      contentImage {
+        fluid {
+          ...GatsbyContentfulFluid_tracedSVG
         }
       }
     }
