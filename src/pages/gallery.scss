@@ -48,6 +48,10 @@ dialog {
   border: none;
   pointer-events: none;
 
+  &&__img {
+    max-height: 550px;
+  }
+
   &::before {
     content: url('../../static/assets/fonts/x.png');
     position: relative;

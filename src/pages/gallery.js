@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { graphql } from 'gatsby'
 import Img from 'gatsby-image'
 import get from 'lodash/get'
@@ -64,7 +64,7 @@ class GalleryPage extends React.Component {
             style={{ position: 'absolute', minWidth: `600px` }}
             onClick={this.handleClose}
           >
-            <Img fluid={this.state.selectedImage} />
+            <Img className="dialog__img" fluid={this.state.selectedImage} />
           </dialog>
         </div>
       </Layout>
