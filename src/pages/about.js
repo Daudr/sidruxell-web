@@ -85,26 +85,26 @@ export const pageQuery = graphql`
       facebookLink
       facebookImage {
         fluid(maxWidth: 270) {
-          ...GatsbyContentfulFluid_tracedSVG
+          ...GatsbyContentfulFluid_withWebp
         }
       }
       youtubeLink
       youtubeImage {
         fluid(maxWidth: 270) {
-          ...GatsbyContentfulFluid_tracedSVG
+          ...GatsbyContentfulFluid_withWebp
         }
       }
       instagramLink
       instagramImage {
         fluid(maxWidth: 270) {
-          ...GatsbyContentfulFluid_tracedSVG
+          ...GatsbyContentfulFluid_withWebp
         }
       }
     }
     pageInfo: contentfulWebPage(webPageTitle: { eq: "About" }) {
       heroImage {
         fluid {
-          ...GatsbyContentfulFluid_tracedSVG
+          ...GatsbyContentfulFluid_withWebp
         }
       }
     }

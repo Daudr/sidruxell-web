@@ -48,7 +48,7 @@ export const pageQuery = graphql`
     pageInfo: contentfulWebPage(webPageTitle: { eq: "Home" }) {
       heroImage {
         fluid {
-          ...GatsbyContentfulFluid_tracedSVG
+          ...GatsbyContentfulFluid_withWebp
         }
       }
     }

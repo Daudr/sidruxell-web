@@ -92,14 +92,14 @@ export const pageQuery = graphql`
       subtitle
       heroImage {
         fluid {
-          ...GatsbyContentfulFluid_tracedSVG
+          ...GatsbyContentfulFluid_withWebp
         }
       }
       contentTitle
       contentSubtitle
       contentImage {
         fluid {
-          ...GatsbyContentfulFluid_tracedSVG
+          ...GatsbyContentfulFluid_withWebp
         }
       }
     }

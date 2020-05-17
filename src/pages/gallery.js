@@ -84,7 +84,7 @@ export const pageQuery = graphql`
     pageInfo: contentfulWebPage(webPageTitle:{ eq: "Gallery" }) {
       heroImage {
         fluid {
-          ...GatsbyContentfulFluid_tracedSVG
+          ...GatsbyContentfulFluid_withWebp
         }
       }
       images: gallery {
@@ -92,7 +92,7 @@ export const pageQuery = graphql`
           ...GatsbyContentfulFixed_tracedSVG
         }
         fluid {
-          ...GatsbyContentfulFluid_tracedSVG
+          ...GatsbyContentfulFluid_withWebp
         }
       }
     }
