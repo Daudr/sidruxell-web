@@ -6,7 +6,7 @@ import './header.scss'
 
 export default ({ location }) => {
   const handleMenuClick = () => {
-    const body = document.getElementsByTagName('body')[0];
+    const body = document.getElementsByTagName('body')[0]
 
     if (body.classList.contains('mobile-header__open')) {
       body.classList.remove('mobile-header__open')
@@ -78,7 +78,7 @@ export default ({ location }) => {
               </Link>
             </div>
 
-            <nav role="navigation">
+            <nav role="navigation" className="page__nav">
               <Link
                 to="/"
                 className={location.pathname === '/' ? 'active' : ''}
