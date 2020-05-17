@@ -13,7 +13,7 @@ class ArticlePageTemplate extends React.Component {
     const siteTitle = get(this.props, 'data.site.siteMetadata.title')
     const heroImage = get(this.props, 'data.pageInfo.heroImage')
     const articles = get(this.props, 'data.articles.nodes')
-    console.log(heroImage)
+
     return (
       <Layout location={this.props.location}>
         <Helmet title={`Articles | ${siteTitle}`}>
