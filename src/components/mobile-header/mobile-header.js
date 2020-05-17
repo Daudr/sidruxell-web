@@ -67,6 +67,12 @@ export default ({ location }) => {
               <strong>Home</strong>
             </Link>
             <Link
+              to="/articles"
+              className={location.pathname.match(/articles/) ? 'active' : ''}
+            >
+              <strong>Articles</strong>
+            </Link>
+            <Link
               to="/gallery"
               onClick={handleClick}
               className={location.pathname === '/gallery' ? 'active' : ''}

@@ -87,7 +87,7 @@ export default ({ location }) => {
               </Link>
               <Link
                 to="/articles"
-                className={location.pathname === '/articles' ? 'active' : ''}
+                className={location.pathname.match(/articles/) ? 'active' : ''}
               >
                 <strong>Articles</strong>
               </Link>
