@@ -15,7 +15,7 @@
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: space-between;
     width: 100%;
     padding: 6px;
 
@@ -23,15 +23,6 @@
       display: flex;
       width: 30%;
       margin: 6px 0;
-    }
-
-    & > div:last-of-type {
-      width: 96% !important;
-
-      & > div {
-        width: 100% !important;
-        height: 300px !important;
-      }
     }
   }
 }
@@ -48,7 +39,7 @@ dialog {
   border: none;
   pointer-events: none;
 
-  &&__img {
+  .dialog__img {
     max-height: 550px;
   }
 
@@ -95,15 +86,11 @@ dialog {
         margin: 6px 0;
         justify-content: center;
       }
-  
-      & > div:last-of-type {
-        width: 96% !important;
-  
-        & > div {
-          width: 100% !important;
-          height: 300px !important;
-        }
-      }
+    }
+
+    dialog {
+      min-width: 300px !important;
+      max-width: 98vw;
     }
   }
 }
