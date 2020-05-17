@@ -16,8 +16,8 @@ class Template extends React.Component {
     }
 
     return (
-      <div>
-        <Helmet htmlAttributes={{'lang': 'it'}} />
+      <div style={{ backgroundColor: `#F2F3F7` }}>
+        <Helmet htmlAttributes={{ lang: 'it' }} />
         <Header location={location} />
         <MobileHeader location={location} />
         <div className="container">{children}</div>

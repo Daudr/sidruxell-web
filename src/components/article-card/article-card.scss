@@ -1,0 +1,55 @@
+.article__card {
+  display: flex;
+  flex-direction: column;
+  max-width: 270px;
+
+  text-decoration: none;
+  background-color: white;
+
+  &-hero {
+    width: 100%;
+    max-width: 270px;
+  }
+
+  &-body {
+    padding: 15px;
+  }
+
+  &-date {
+    font-family: 'Open Sans';
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: 13px;
+    color: #7baee2;
+    letter-spacing: 3px;
+  }
+
+  &-title {
+    font-family: 'Open Sans';
+    font-size: 17px;
+    margin-top: 5px;
+
+    strong {
+      display: block;
+    }
+  }
+
+  &-description {
+    font-family: 'Open Sans';
+    font-size: 15px;
+    font-weight: 300;
+  }
+}
+
+@media (max-width: 840px) {
+  .article__card {
+    width: 100%;
+    max-width: 100%;
+    margin: 10px auto;
+
+    &-hero {
+      width: 100% !important;
+      max-width: 100%;
+    }
+  }
+}

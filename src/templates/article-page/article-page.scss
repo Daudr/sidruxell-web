@@ -1,0 +1,21 @@
+.article__page {
+  display: flex;
+
+  &-wrapper {
+    display: flex;
+    align-items: start;
+    justify-content: space-evenly;
+    width: 100%;
+
+    margin-bottom: 100px;
+  }
+}
+
+@media (max-width: 840px) {
+  .article__page {
+    &-wrapper {
+      flex-direction: column;
+      padding: 10px;
+    }
+  }
+}
