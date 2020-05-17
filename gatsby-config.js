@@ -24,6 +24,7 @@ if (!spaceId || !accessToken) {
 module.exports = {
   siteMetadata: {
     title: 'Sid Ruxell',
+    siteUrl: `https://www.sidruxell.com`,
   },
   pathPrefix: '/gatsby-contentful-starter',
   plugins: [
