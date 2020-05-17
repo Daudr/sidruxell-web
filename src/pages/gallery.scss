@@ -72,7 +72,6 @@ dialog {
 
 @media (max-width: 768px) {
   .gallery {
-  
     &__wrapper {
       display: flex;
       flex-wrap: wrap;
@@ -87,10 +86,10 @@ dialog {
         justify-content: center;
       }
     }
+  }
 
-    dialog {
-      min-width: 300px !important;
-      max-width: 98vw;
-    }
+  dialog {
+    min-width: 300px !important;
+    max-width: calc(100vw - 20px);
   }
 }
