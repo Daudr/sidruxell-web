@@ -89,7 +89,7 @@ export const pageQuery = graphql`
       }
       images: gallery {
         fixed {
-          ...GatsbyContentfulFixed_tracedSVG
+          ......GatsbyContentfulFixed_withWebp
         }
         fluid {
           ...GatsbyContentfulFluid_withWebp

@@ -79,7 +79,7 @@ export const pageQuery = graphql`
       }
       heroImage {
         fixed(width: 340) {
-          ...GatsbyContentfulFixed_tracedSVG
+          ......GatsbyContentfulFixed_withWebp
         }
       }
       facebookLink

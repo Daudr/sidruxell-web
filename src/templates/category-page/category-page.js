@@ -71,7 +71,7 @@ export const pageQuery = graphql`
         }
         heroImage {
           fixed(width: 270) {
-            ...GatsbyContentfulFixed_tracedSVG
+            ......GatsbyContentfulFixed_withWebp
           }
         }
       }
