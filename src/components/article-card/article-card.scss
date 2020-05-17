@@ -9,10 +9,24 @@
   &-hero {
     width: 100%;
     max-width: 270px;
+
+    &-category {
+      position: relative;
+      bottom: 40px;
+      background-color: black;
+      color: white;
+      padding: 0 3px;
+      
+      display: flex;
+      width: 30%;
+      justify-content: center;
+      margin-left: 10px;
+    }
   }
 
   &-body {
     padding: 15px;
+    margin-top: -40px;
   }
 
   &-date {

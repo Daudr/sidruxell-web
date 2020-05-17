@@ -56,6 +56,9 @@ export const pageQuery = graphql`
       nodes {
         slug
         title
+        category {
+          category
+        }
         publishDate: updatedAt(formatString: "DD MMM YYYY", locale: "it")
         description {
           childMarkdownRemark {
