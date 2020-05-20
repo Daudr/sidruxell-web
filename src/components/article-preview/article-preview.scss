@@ -30,6 +30,9 @@
   }
 
   &__body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     width: 60%;
 
     &-subtitle {
@@ -51,11 +54,13 @@
     &-text {
       font-family: 'Open Sans';
       font-weight: 300;
-      height: 155px;
-      max-height: 155px;
       text-overflow: ellipsis;
       overflow: hidden;
       font-weight: 300;
+
+      > p {
+        margin: 0;
+      }
     }
 
     &-action {
@@ -69,9 +74,17 @@
       border: none;
       padding: 20px 40px;
 
-      margin-top: 25px;
-
       text-decoration: none;
+      max-width: 250px;
+      justify-self: flex-end;
+
+      &.sx {
+        align-self: flex-start;
+      }
+    
+      &.dx {
+        align-self: flex-end;
+      }
     }
   }
 }
