@@ -23,7 +23,9 @@ class Template extends React.Component {
       <StaticQuery
         query={graphql`
           query LayoutQuery {
-            categories: allContentfulBlogPostCategory {
+            categories: allContentfulBlogPostCategory(
+              filter: { blog_post: { elemMatch: { id: { ne: "null" } } } }
+            ) {
               nodes {
                 category
               }
@@ -40,6 +42,7 @@ class Template extends React.Component {
                   <Link
                     key="c.category"
                     to={`/articles/${kebabCase(c.category)}`}
+                    style={{ margin: `0 10px` }}
                     className={
                       location.pathname.match(
                         new RegExp(`${kebabCase(c.category)}`)

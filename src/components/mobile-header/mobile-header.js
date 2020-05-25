@@ -68,6 +68,7 @@ export default ({ location }) => {
             </Link>
             <Link
               to="/articles"
+              onClick={handleClick}
               className={location.pathname.match(/articles/) ? 'active' : ''}
             >
               <strong>Articles</strong>
