@@ -1,6 +1,6 @@
 const Promise = require('bluebird')
 const path = require('path')
-const _ = require('lodash')
+const lodash = require('lodash')
 
 exports.createPages = ({ graphql, actions }) => {
   const { createPage } = actions
@@ -53,7 +53,7 @@ exports.createPages = ({ graphql, actions }) => {
           })
         })
 
-        const postsPerPage = 6
+        const postsPerPage = 9
 
         const pages = Math.ceil(posts.length / postsPerPage)
 
@@ -79,12 +79,12 @@ exports.createPages = ({ graphql, actions }) => {
             postsForCategory.length / postsPerPage
           )
 
-          Array.from({ length: categoryPages }).forEach((item, i) => {
+          Array.from({ length: categoryPages }).forEach((_, i) => {
             createPage({
               path:
                 i === 0
-                  ? `articles/${_.kebabCase(cat.category)}/`
-                  : `articles/${_.kebabCase(cat.category)}/page/${i + 1}`,
+                  ? `articles/${lodash.kebabCase(cat.category)}/`
+                  : `articles/${lodash.kebabCase(cat.category)}/page/${i + 1}`,
               component: categoryTemplate,
               context: {
                 limit: postsPerPage,
