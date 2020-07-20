@@ -22,7 +22,6 @@
   }
 
   img {
-    margin: 15px;
 
     &[src$='#left-img'] {
       float: left;
@@ -36,7 +35,7 @@
 
     &[src$='full-width-img'] {
       max-height: 500px;
-      min-width: 100vw;
+      min-width: 500px;
       position: relative;
     }
   }
